@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO list</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="mx-auto text-center w-[750px]">
+    <!-- HEADER -->
+    <div
+      class="text-3xl text-bold mx-auto mt-[20px] mb-[40px] flex justify-center font-[600] text-purple"
+    >
+      TODO LIST
+    </div>
+    <div class="flex justify-center">
+      <input
+        id="input"
+        for="search"
+        class="placeholder:text-gray-300 border-[2px] w-[530px] border-indigo-500 rounded-[6px] p-[4px] pl-8 relative"
+        onclick="Input()"
+        placeholder="Search note... "
+        type="text"
+        name="search"
+      />
+
+      <button class="absolute top-26 left-85.5">
+        <i data-lucide="search" color="#6C63FF" stroke-width="1.5"></i>
+      </button>
+
+      <form class="max-w-sm mx-auto">
+        <select
+          id="select"
+          class="block w-full px-2 py-2.5 bg-[#6C63FF] border border-default-medium rounded-[10px] text-heading text-white rounded-base flex justify-around focus:border-brand shadow-xs placeholder:text-body hover:drop-shadow-lg drop-shadow-purple"
+        >
+          <option selected>ALL</option>
+          <option value="Complete">Complete</option>
+          <option value="Incomplete">Incomplete</option>
+        </select>
+      </form>
+      <div
+        class="bg-[#6C63FF] w-[38px] h-[38px] p-2 rounded-[7px]"
+        onclick="dark()"
+      >
+        <i data-lucide="moon" color="white" id="icon"></i>
+      </div>
+    </div>
+    <!-- TASKS SECTION -->
+    <div
+      class="w-[525px] mx-auto flex flex-row-reverse justify-around text-start ml-5 mt-[20px] mb-[20px]"
+      id="tasks"
+    >
+      <div
+        class="w-[525px] border-b-[2px] border-[#6C63FF] text-[30px] font-mono"
+      >
+        hbegfeygs
+      </div>
+      <input type="checkbox" class="mr-4 w-7 text-[#6C63FF]" />
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      const icon = document.getElementById("icon");
+      function dark() {
+        icon.setAttribute("data-lucide", "sun");
+      }
+      const tasks = document.getElementById("tasks");
+      const tasksArray = [
+        {
+          name: "mopping",
+          status: "active",
+        },
+        {
+          name: "cleaning",
+          status: "completed",
+        },
+        {
+          name: "washing",
+          status: "active",
+        },
+      ];
+      const render = () => {
+        const tasksHTML = tasksArray.map((task) => {
+          return `
+          <div class="w-[525px] mx-auto flex flex-row-reverse justify-around text-start ml-5 mt-[20px] mb-[20px]">
+            <div class="w-[525px] border-b-[2px] border-[#6C63FF] text-[30px] font-mono">
+              ${task.name}
+            </div>
+            <input type="checkbox" class="mr-4 w-7 text-[#6C63FF]" />
+          </div>
+          `;
+        });
+      };
+      render();
+      function input() {
+        const input = document.getElementById("Input");
+        input.style.color = "red";
+      }
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
